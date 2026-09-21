@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MediciRouteImport } from './routes/medici'
+import { Route as MesajeRouteImport } from './routes/mesaje'
+import { Route as PacientiRouteImport } from './routes/pacienti'
+import { Route as ProgramariRouteImport } from './routes/programari'
+import { Route as ServiciiRouteImport } from './routes/servicii'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MediciRoute = MediciRouteImport.update({
+  id: '/medici',
+  path: '/medici',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MesajeRoute = MesajeRouteImport.update({
+  id: '/mesaje',
+  path: '/mesaje',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PacientiRoute = PacientiRouteImport.update({
+  id: '/pacienti',
+  path: '/pacienti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramariRoute = ProgramariRouteImport.update({
+  id: '/programari',
+  path: '/programari',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciiRoute = ServiciiRouteImport.update({
+  id: '/servicii',
+  path: '/servicii',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/medici': typeof MediciRoute
+  '/mesaje': typeof MesajeRoute
+  '/pacienti': typeof PacientiRoute
+  '/programari': typeof ProgramariRoute
+  '/servicii': typeof ServiciiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/medici': typeof MediciRoute
+  '/mesaje': typeof MesajeRoute
+  '/pacienti': typeof PacientiRoute
+  '/programari': typeof ProgramariRoute
+  '/servicii': typeof ServiciiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/medici': typeof MediciRoute
+  '/mesaje': typeof MesajeRoute
+  '/pacienti': typeof PacientiRoute
+  '/programari': typeof ProgramariRoute
+  '/servicii': typeof ServiciiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/medici' | '/mesaje' | '/pacienti' | '/programari' | '/servicii'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/medici' | '/mesaje' | '/pacienti' | '/programari' | '/servicii'
+  id:
+    | '__root__'
+    | '/'
+    | '/medici'
+    | '/mesaje'
+    | '/pacienti'
+    | '/programari'
+    | '/servicii'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MediciRoute: typeof MediciRoute
+  MesajeRoute: typeof MesajeRoute
+  PacientiRoute: typeof PacientiRoute
+  ProgramariRoute: typeof ProgramariRoute
+  ServiciiRoute: typeof ServiciiRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/medici': {
+      id: '/medici'
+      path: '/medici'
+      fullPath: '/medici'
+      preLoaderRoute: typeof MediciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mesaje': {
+      id: '/mesaje'
+      path: '/mesaje'
+      fullPath: '/mesaje'
+      preLoaderRoute: typeof MesajeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pacienti': {
+      id: '/pacienti'
+      path: '/pacienti'
+      fullPath: '/pacienti'
+      preLoaderRoute: typeof PacientiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programari': {
+      id: '/programari'
+      path: '/programari'
+      fullPath: '/programari'
+      preLoaderRoute: typeof ProgramariRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicii': {
+      id: '/servicii'
+      path: '/servicii'
+      fullPath: '/servicii'
+      preLoaderRoute: typeof ServiciiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MediciRoute: MediciRoute,
+  MesajeRoute: MesajeRoute,
+  PacientiRoute: PacientiRoute,
+  ProgramariRoute: ProgramariRoute,
+  ServiciiRoute: ServiciiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
